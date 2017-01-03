@@ -1,0 +1,1 @@
+"k:\Program Files (x86)\Rockstar Games\GTA San Andreas\samp.exe" 127.0.0.1:7777

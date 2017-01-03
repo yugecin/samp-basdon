@@ -1,0 +1,19 @@
+
+# 'sensitive' files
+src/db.h
+
+# build output
+buildvs/out/
+buildvs/obj/
+
+# samp server
+samp03/
+
+# various
+var/
+
+# misc utils
+# tool made by grasmanek94 https://github.com/grasmanek94/eXe/tree/master/projects/LOCSummary
+src/LOCSummary.exe
+src/LOCSummary.ignore
+
