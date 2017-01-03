@@ -7,8 +7,9 @@ A sa-mp c++ racing gamemode inspired by need for speed world etc.
 
 ## Building
 
+* copy `src/db.sample.h` to `src/db.h` and edit the settings
 * Windows: edit `env.bat` as needed and run `buildclean.bat`
-* Linux: run `make`
+* Linux: run `make` (todo)
 
 ## Notes
 
