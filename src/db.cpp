@@ -31,15 +31,15 @@ void init_database()
 	if(mysql_query(con, "USE "DB_DBNAME))
 		exit_on_database_failure("MySQL: could not use db: %s\n");
 
-	//sampgdk::logprintf("mysql info: %s\n", mysql_get_client_info());
+	sampgdk::logprintf("mysql info: %s\n", mysql_get_client_info());
 }
 
 void exit_on_database_failure(const char *errstr_format)
 {
 	if (con == NULL) {
-		//sampgdk::logprintf(errstr_format, "unknown, couldn't init");
+		sampgdk::logprintf(errstr_format, "unknown, couldn't init");
 	} else {
-		//sampgdk::logprintf(errstr_format, mysql_error(con));
+		sampgdk::logprintf(errstr_format, mysql_error(con));
 		mysql_close(con);
 	}
 	exit(1);
