@@ -1,4 +1,5 @@
 @echo off
+color 18
 call env
 if not exist "%SourceDir%\db.h" goto nodbfile
 :b
