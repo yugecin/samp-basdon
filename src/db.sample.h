@@ -23,4 +23,7 @@
 #define DB_USR "root"
 #define DB_PW ""
 
+void init_database();
+void exit_on_database_failure(const char *errstr_format);
+
 #endif /* MMPG_DB */

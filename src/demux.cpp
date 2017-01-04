@@ -15,23 +15,27 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef MMPG_BNFS
-#define MMPG_BNFS
+#include "bnfs.h"
+#include "defs.h"
 
-#ifdef __WIN
-	#define WIN32_LEAN_AND_MEAN
-#endif
+PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerCommandText(int playerid, const char *cmdtext)
+{
+	return SendClientMessage(playerid, COLOR_WARN, MSG_PREFIX_WARN "Command not found");
+}
 
-//#define sprintf sprintf_s
+PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerSpawn(int playerid)
+{
+	return true;
+}
 
-#include <mysql.h>
+PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerClickTextDraw(int playerid, int clickedid)
+{
+	return true;
+}
 
-#include "sampgdk.h"
-#undef MAX_PLAYERS
-#define MAX_PLAYERS (100)
+PLUGIN_EXPORT bool PLUGIN_CALL OnDialogResponse(int playerid, int dialogid, int response,
+                                                int listitem, const char *inputtext)
+{
+	return true;
+}
 
-#define MMPG_VERSION "build 0p"
-
-extern MYSQL *con;
-
-#endif /* MMPG_BNFS */

@@ -58,10 +58,10 @@
   <ItemGroup>
     <ClInclude Include="$(SourceDir)\sampgdk\sampgdk.h" />
     <ClCompile Include="$(SourceDir)\sampgdk\amxplugin.cpp" />
-    <ClCompile Include="$(SourceDir)\sampgdk\sampgdk.c">
-      <CompileAs>CompileAsC</CompileAs>
-    </ClCompile>
+    <ClCompile Include="$(SourceDir)\sampgdk\sampgdk.c"><CompileAs>CompileAsC</CompileAs></ClCompile>
     <ClCompile Include="$(SourceDir)\$(Projectname).cpp" />
+    <ClCompile Include="$(SourceDir)\db.cpp" />
+    <ClCompile Include="$(SourceDir)\demux.cpp" />
     <None Include="$(SourceDir)\$(ProjectName).def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

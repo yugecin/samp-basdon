@@ -15,23 +15,33 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef MMPG_BNFS
-#define MMPG_BNFS
+#include "bnfs.h"
+#include "db.h"
 
-#ifdef __WIN
-	#define WIN32_LEAN_AND_MEAN
-#endif
+void init_database()
+{
+	con = mysql_init(NULL);
 
-//#define sprintf sprintf_s
+	if(con == NULL)
+		exit_on_database_failure("MySQL panic: %s\n");
 
-#include <mysql.h>
+	if(mysql_real_connect(con, DB_HOST, DB_USR, DB_PW, NULL, 0, NULL, 0) == NULL)
+		exit_on_database_failure("MySQL: could not login: %s\n");
 
-#include "sampgdk.h"
-#undef MAX_PLAYERS
-#define MAX_PLAYERS (100)
+	if(mysql_query(con, "USE "DB_DBNAME))
+		exit_on_database_failure("MySQL: could not use db: %s\n");
 
-#define MMPG_VERSION "build 0p"
+	//sampgdk::logprintf("mysql info: %s\n", mysql_get_client_info());
+}
 
-extern MYSQL *con;
+void exit_on_database_failure(const char *errstr_format)
+{
+	if (con == NULL) {
+		//sampgdk::logprintf(errstr_format, "unknown, couldn't init");
+	} else {
+		//sampgdk::logprintf(errstr_format, mysql_error(con));
+		mysql_close(con);
+	}
+	exit(1);
+}
 
-#endif /* MMPG_BNFS */

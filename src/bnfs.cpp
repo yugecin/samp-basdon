@@ -18,11 +18,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "db.h"
 #include "bnfs.h"
+#include "db.h"
 #include "defs.h"
 
-int g_playercount;
 MYSQL *con;
 
 /*
@@ -31,32 +30,6 @@ void SAMPGDK_CALL PrintTickCountTimer(int timerid, void *params)
 	sampgdk::logprintf("Tick count: %d", GetTickCount());
 }
 */
-
-void init_database()
-{
-	con = mysql_init(NULL);
-
-	if(con == NULL)
-		exit_on_database_failure("MySQL panic: %s\n");
-
-	if(mysql_real_connect(con, DB_HOST, DB_USR, DB_PW, NULL, 0, NULL, 0) == NULL)
-		exit_on_database_failure("MySQL: could not login: %s\n");
-
-	if(mysql_query(con, "USE "DB_DBNAME))
-		exit_on_database_failure("MySQL: could not use db: %s\n");
-
-	sampgdk::logprintf("mysql info: %s\n", mysql_get_client_info());
-}
-
-void exit_on_database_failure(const char *errstr_format) {
-	if (con == NULL) {
-		sampgdk::logprintf(errstr_format, "unknown, couldn't init");
-	} else {
-		sampgdk::logprintf(errstr_format, mysql_error(con));
-		mysql_close(con);
-	}
-	exit(1);
-}
 
 PLUGIN_EXPORT bool PLUGIN_CALL OnGameModeInit()
 {
@@ -80,27 +53,6 @@ PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerConnect(int playerid)
 	ShowPlayerDialog(playerid, -1, DIALOG_STYLE_MSGBOX, "_", "_", "_", "_");
 
 	SetSpawnInfo(playerid, 0, 0, 1375.04f, -920.53f, 34.46f, 0.0, 0, 0, 0, 0, 0, 0);
-	return true;
-}
-
-PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerCommandText(int playerid, const char *cmdtext)
-{
-	return SendClientMessage(playerid, COLOR_WARN, MSG_PREFIX_WARN "Command not found");
-}
-
-PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerSpawn(int playerid)
-{
-	return true;
-}
-
-PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerClickTextDraw(int playerid, int clickedid)
-{
-	return true;
-}
-
-PLUGIN_EXPORT bool PLUGIN_CALL OnDialogResponse(int playerid, int dialogid, int response,
-                                                int listitem, const char *inputtext)
-{
 	return true;
 }
 

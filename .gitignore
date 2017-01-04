@@ -11,6 +11,8 @@ samp03/
 
 # various
 var/
+\!git-bash.lnk
+\!remote-origin.url
 
 # misc utils
 # tool made by grasmanek94 https://github.com/grasmanek94/eXe/tree/master/projects/LOCSummary
