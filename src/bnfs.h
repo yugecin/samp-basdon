@@ -27,10 +27,10 @@
 #include <mysql.h>
 
 #include "sampgdk.h"
+#ifdef MAX_PLAYERS_OVERRIDE
 #undef MAX_PLAYERS
-#define MAX_PLAYERS (100)
-
-#define MMPG_VERSION "build 0p"
+#define MAX_PLAYERS (MAX_PLAYERS_OVERRIDE)
+#endif
 
 extern MYSQL *con;
 

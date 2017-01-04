@@ -40,6 +40,7 @@ PLUGIN_EXPORT bool PLUGIN_CALL OnGameModeInit()
 	AddPlayerClass(0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
 	//SetTimer(1000, true, PrintTickCountTimer, 0);
 
+	sampgdk::logprintf("bnfs "MMPG_VERSION);
 	return true;
 }
 

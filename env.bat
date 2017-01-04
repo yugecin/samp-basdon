@@ -9,9 +9,12 @@ set ToolsVersion=%VisualStudioVersion%
 set ProjectName=bnfs
 set TargetName=bnfs
 
+call buildsettings
+
 set WorkingDir=%cd%
 set SourceDir=%WorkingDir%\src
+
 set AdditionalIncludeDirectories=%SourceDir%;%SourceDir%\sampgdk;%SourceDir%\sampgdk\amx;%MySQLConnectorCIncludePath%
 set AdditionalLibraryDirectories=%MySQLConnectorCLibraryPath%
 set AdditionalDependencies=libmysql.lib;mysqlclient.lib
-set PreprocessorDefinitions=WIN32;_WINDOWS;_DEBUG;HAVE_INTTYPES_H;HAVE_MALLOC_H;HAVE_STDINT_H;SAMPGDK_AMALGAMATION
+set PreprocessorDefinitions=WIN32;_WINDOWS;_DEBUG;HAVE_INTTYPES_H;HAVE_MALLOC_H;HAVE_STDINT_H;SAMPGDK_AMALGAMATION;MMPG_VERSION=%version%;MAX_PLAYERS_OVERRIDE=%MAX_PLAYERS%
